@@ -55,7 +55,7 @@ signs data set:
 
 Here is an exploratory visualization of the data set. It is a bar chart showing count of data for given classes.
 
-![bar_train](./writeup_images/bar_train_data.JPG)
+![bar_train](./writeup_images/bar_training_data.JPG)
 ![bar_valid](./writeup_images/bar_validation_data.JPG)
 ![bar_test](./writeup_images/bar_test_data.JPG)
 
