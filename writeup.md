@@ -1,7 +1,6 @@
 # **Traffic Sign Recognition** 
 
-###The project analyzes the input image of german traffic sign and predicts the label for the image.
-
+### The project analyzes the input image of german traffic sign and predicts the label for the image.
 
 ---
 
