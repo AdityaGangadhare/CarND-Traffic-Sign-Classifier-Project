@@ -73,7 +73,7 @@ Here is an example of a traffic sign image before and after grayscaling.
  
 
 
-#### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
+#### 2. Final model architecture.
 
 My final model consisted of the following layers:
 
@@ -96,77 +96,136 @@ My final model consisted of the following layers:
 | Fully connected		| outputs 43									|
 | Softmax				| 												|
  
+#### 3. Training the model.
 
+To train the model, I used Adam Optimizer with learning rate = 0.001
 
-#### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
+I changed the batch size to 100 and the number of epochs to 42.
 
-To train the model, I used an ....
+#### 4. Getting the desired validation accuracy (i.e. > 0.93). 
 
-#### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
+I used the LeNet architecture for my CNN. First I ran the model as is and got the validation accuracy of 0.87, without any preprocrssing of training data. Next I normalized the images which increased the validation accuracy
+to around 0.90.
+I further increased the accuracy by doing data augmentation also I used dropout layer in between the fully connected layers in the LeNet architecture.
+
+The final values of the parameters I used -
+* No. of epochs = 42
+* Batch size = 100
+* Learning rate = 0.001
+* Keep prob for dropout = 0.7
 
 My final model results were:
-* training set accuracy of ?
-* validation set accuracy of ? 
-* test set accuracy of ?
-
-If an iterative approach was chosen:
-* What was the first architecture that was tried and why was it chosen?
-* What were some problems with the initial architecture?
-* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
-* Which parameters were tuned? How were they adjusted and why?
-* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
-
-If a well known architecture was chosen:
-* What architecture was chosen?
-* Why did you believe it would be relevant to the traffic sign application?
-* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
+* training set accuracy of 1.00
+* validation set accuracy of 0.973 
+* test set accuracy of 0.943
  
 
-### Test a Model on New Images
+### Testing the Model on New Images
 
-#### 1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
+Below are eight German traffic signs that I found on the web:
 
-Here are five German traffic signs that I found on the web:
+![signals](./writeup_images/german_traffic_signals.JPG)
 
-![bar_train](./writeup_images/bar_train_data.JPG)
-![bar_valid](./writeup_images/bar_validation_data.JPG)
-![bar_test](./writeup_images/bar_test_data.JPG)
+#### Model's predictions on these new traffic signs.
 
-The first image might be difficult to classify because ...
+![predictions](./writeup_images/prediction.JPG)
 
-#### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
+ Image			        				|     Prediction	        			| 
+|:-------------------------------------:|:-------------------------------------:| 
+| Stop sign      						| Stop sign   							| 
+| Bumpy Road      						| Bumpy Road  							|
+| 70 km/h     							| 70 km/h 								|
+| Roundabout mandatory					| Roundabout mandatory					|
+| No entry	      						| No Passing 						 		|
+| Turn left ahead						| Turn left ahead      					|
+| Wild animals crossing 				| Wild animals crossing					|
+| Right-of-way at the next intersection	| Right-of-way at the next intersection	|
 
-Here are the results of the prediction:
+The model was able to correctly guess 7 of the 8 traffic signs, which gives an accuracy of 87.50%.
 
-| Image			        |     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+#### Softmax probabilities for each prediction.
 
+The top 5 soft max probabilities were
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+For the first image ...
 
-#### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
-
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
-
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
-
-| Probability         	|     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+| Probability         		|     Prediction	        					| 
+|:-------------------------:|:---------------------------------------------:| 
+| 1.0         				| Stop sign   									| 
+| 6.4124751032872975e-16		| Keep right							|
+| 2.5295341950549196e-16	| No vehicles										|
+| 3.11662753732984e-18	| Priority road						 				|
+| 7.932785505240565e-20   	| No entry      							|
 
 
-For the second image ... 
+For the second image ...
 
-### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
-#### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
+| Probability         		|     Prediction	        					| 
+|:-------------------------:|:---------------------------------------------:| 
+| 0.5157997012138367						| Bumpy road   						| 
+| 0.4635957181453705	| Bicycles crossing			|
+| 0.020509354770183563		| Road work 								|
+| 5.250752656138502e-05		| Wild animals crossing			 				|
+| 2.0697008949355222e-05  	| Beware of ice/snow								| 
+ 
+For the third image ...
+
+| Probability         		|     Prediction	        					| 
+|:-------------------------:|:---------------------------------------------:| 
+| 0.9998396635055542		| Speed limit (70km/h) 				   						| 
+| 0.00012139005411881953		| General caution								|
+| 3.285313141532242e-05		| Speed limit (30km/h)											|
+| 5.979827619739808e-06		| Stop					 				|
+| 2.4457539993250066e-08   	| Priority road		 								|
+
+For the fourth image ...
+
+| Probability         		|     Prediction	        					| 
+|:-------------------------:|:---------------------------------------------:| 
+| 0.9818089604377747		| Roundabout mandatory 				   						| 
+| 0.012037435546517372		| Speed limit (120km/h)								|
+| 0.006035680416971445		| Speed limit (100km/h)											|
+| 0.00010194475908065215		| Speed limit (20km/h)					 				|
+|1.4727334928466007e-05   	| Speed limit (30km/h)		 								| 
+
+For the fifth image ...
+
+| Probability         		|     Prediction	        					| 
+|:-------------------------:|:---------------------------------------------:| 
+| 1.0						| No passing  		 						| 
+| 6.099916765241005e-19		|No passing for vehicles over 3.5 metric tons									|
+| 8.904519807246355e-20 	| Speed limit (30km/h)							|
+| 1.8049882701022258e-21	| Roundabout mandatory			 				|
+| 1.5343883303883637e-21   	| Ahead only		 							| 
+
+For the sixth image ...
+
+| Probability         		|     Prediction	        					| 
+|:-------------------------:|:---------------------------------------------:| 
+| 0.9719275832176208						| Turn left ahead   						| 
+| 0.022670583799481392 	| Stop									|
+| 0.002862347522750497 	| Keep right					|
+| 0.0012113333214074373 	| Ahead only						 				|
+| 0.0008556453394703567   	| No entry								| 
+
+For the seventh image ...
+
+| Probability         		|     Prediction	        					| 
+|:-------------------------:|:---------------------------------------------:| 
+| 1.0						| Wild animals crossing   		| 
+| 1.430761620291321e-09	| Double curve							|
+| 2.947466576364022e-11	| Dangerous curve to the left							|
+| 2.4954813529929286e-16	| Bicycles crossing    					 			|
+| 1.417311113883059e-17		| Road narrows on the right 	 							|
+
+For the eight image ...
+
+| Probability         		|     Prediction	        					| 
+|:-------------------------:|:---------------------------------------------:| 
+| 1.0						| Right-of-way at the next intersection   		| 
+| 8.826455538679667e-11	| Beware of ice/snow							|
+| 1.0646417422785145e-13	| Pedestrians							|
+| 1.006456088751466e-15	| Roundabout mandatory    					 			|
+| 11.2303850458534788e-18		| Road work 	 							|
 
 
