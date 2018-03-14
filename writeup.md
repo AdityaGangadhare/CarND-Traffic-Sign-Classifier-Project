@@ -31,6 +31,7 @@ You're reading it! and here is a link to my [project code](https://github.com/Ad
 
 ### Data Set Summary & Exploration
 
+#### 1. Here is the basic summary of the data set.
 I used the numpy library to calculate summary statistics of the traffic signs data set:
 
 * The size of training set is 34799
