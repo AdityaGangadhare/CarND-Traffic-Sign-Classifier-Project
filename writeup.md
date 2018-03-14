@@ -57,7 +57,7 @@ Here is an exploratory visualization of the data set. It is a bar chart showing 
 
 ![bar_train](./writeup_images/bar_training_data.JPG)
 ![bar_valid](./writeup_images/bar_validation_data.JPG)
-![bar_test](./writeup_images/bar_test_data.JPG)
+ ![bar_test](./writeup_images/bar_test_data.JPG)
 
 ### Design and Test a Model Architecture
 
