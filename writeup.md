@@ -53,7 +53,7 @@ Here is an exploratory visualization of the data set. It is a bar chart showing 
 #### 1. Preprocessing the image data.
 
 Initially I trained my model on the given data set without any preprocessing and got around 87% accuracy. To increase the accuracy, I implemented preprocessing and got the accuracy up to 90%. This wasn't enough so to further increase it I went for data augmentation.
-To augment the given training data I used rotation. Then I converted this augmented training dataset into grayscale followed by normalization.
+To augment the given training data I used rotation. Then I converted this augmented training dataset into grayscale followed by normalization.The main preprocessing technique I used was to grayscale the images. I used this approach since many signs had similar color patterns and hence, no real advantage would come from using color expect from some cases. After the grayscale I also normalized the image data because it helps in speed of training and performance.
 
 Here is an example of a traffic sign image before and after grayscaling.
 
@@ -88,14 +88,12 @@ My final model consisted of the following layers:
 #### 3. Training the model.
 
 To train the model, I used Adam Optimizer with learning rate = 0.001
-
 I changed the batch size to 100 and the number of epochs to 42.
 
 #### 4. Getting the desired validation accuracy (i.e. > 0.93). 
 
-I used the LeNet architecture for my CNN. First I ran the model as is and got the validation accuracy of 0.87, without any preprocrssing of training data. Next I normalized the images which increased the validation accuracy
-to around 0.90.
-I further increased the accuracy by doing data augmentation also I used dropout layer in between the fully connected layers in the LeNet architecture.
+I used the LeNet architecture for my CNN. First I ran the model as is and got the validation accuracy of 0.87, without any preprocrssing of training data. Next I normalized the images which increased the validation accuracy to around 0.90.
+I further increased the accuracy by doing data augmentation also I used dropout layer in between the fully connected layers in the LeNet architecture. Below are the final parameters that I used. I experimented with different values of epochs and learning rate, accuracy was fairly consstant when i used values greater than 42. Using learning rate smaller than 0.001 model took more epoches to saturate.  
 
 The final values of the parameters I used -
 * No. of epochs = 42
@@ -104,9 +102,9 @@ The final values of the parameters I used -
 * Keep prob for dropout = 0.7
 
 My final model results were:
-* training set accuracy of 1.00
-* validation set accuracy of 0.973 
-* test set accuracy of 0.943
+* Training set accuracy of 1.00
+* Validation set accuracy of 0.973 
+* Test set accuracy of 0.943
  
 
 ### Testing the Model on New Images
@@ -114,6 +112,7 @@ My final model results were:
 Below are eight German traffic signs that I found on the web:
 
 ![signals](./writeup_images/german_traffic_signals.JPG)
+Some of the image might be difficult to classify. For eg. The third image as there is very little difference form other speed limit signs. The fifth image of "No Entry" has many similar features to "STOP" sign, "left turn/right turn" sign.
 
 #### Model's predictions on these new traffic signs.
 
