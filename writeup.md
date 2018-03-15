@@ -93,7 +93,7 @@ I changed the batch size to 100 and the number of epochs to 42.
 #### 4. Getting the desired validation accuracy (i.e. > 0.93). 
 
 I used the LeNet architecture for my CNN. First I ran the model as is and got the validation accuracy of 0.87, without any preprocrssing of training data. Next I normalized the images which increased the validation accuracy to around 0.90.
-I further increased the accuracy by doing data augmentation also I used dropout layer in between the fully connected layers in the LeNet architecture. Below are the final parameters that I used. I experimented with different values of epochs and learning rate, accuracy was fairly consstant when i used values greater than 42. Using learning rate smaller than 0.001 model took more epoches to saturate.  
+I further increased the accuracy by doing data augmentation also I used dropout layer in between the fully connected layers in the LeNet architecture. Below are the final parameters that I used. I experimented with different values of epochs and learning rate, accuracy was fairly consstant when I used values greater than 42. Using learning rate smaller than 0.001 model took more epoches to saturate.  
 
 The final values of the parameters I used -
 * No. of epochs = 42
